@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{D24BEFC0-AD0C-47B4-BD4F-EE72776D310E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectEvenNumber", "DetectEvenNumber\DetectEvenNumber.csproj", "{4F200599-41BD-4962-995B-2C275C576654}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D24BEFC0-AD0C-47B4-BD4F-EE72776D310E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D24BEFC0-AD0C-47B4-BD4F-EE72776D310E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D24BEFC0-AD0C-47B4-BD4F-EE72776D310E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F200599-41BD-4962-995B-2C275C576654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F200599-41BD-4962-995B-2C275C576654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F200599-41BD-4962-995B-2C275C576654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F200599-41BD-4962-995B-2C275C576654}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
