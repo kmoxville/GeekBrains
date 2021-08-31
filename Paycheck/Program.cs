@@ -10,12 +10,12 @@ namespace Paycheck
         private int width;
         private List<PaycheckRow> rowList = new List<PaycheckRow>();
 
-        private const string UL_CORNER          = "╔";
-        private const string BL_CORNER          = "╚";
-        private const string UR_CORNER          = "╗";
-        private const string BR_CORNER          = "╝";
-        private const string VERTICAL_LINE      = "║";
-        private const string HORIZONTAL_LINE    = "═";
+        private const char UL_CORNER          = '╔';
+        private const char BL_CORNER          = '╚';
+        private const char UR_CORNER          = '╗';
+        private const char BR_CORNER          = '╝';
+        private const char VERTICAL_LINE      = '║';
+        private const char HORIZONTAL_LINE    = '═';
 
         public Paycheck(int width = 50)
         {
@@ -24,12 +24,12 @@ namespace Paycheck
 
         public string Header
         {
-            get => UL_CORNER + string.Concat(Enumerable.Repeat(HORIZONTAL_LINE, width - 2).ToList()) + UR_CORNER;
+            get => UL_CORNER.ToString().PadRight(width - 2, HORIZONTAL_LINE) + UR_CORNER;
         }
 
         public string Footer
         {
-            get => BL_CORNER + string.Concat(Enumerable.Repeat(HORIZONTAL_LINE, width - 2).ToList()) + BR_CORNER;
+            get => BL_CORNER.ToString().PadRight(width - 2, HORIZONTAL_LINE) + BR_CORNER;
         }
 
         public Paycheck AddRow(PaycheckRow newRow)
@@ -54,21 +54,21 @@ namespace Paycheck
             Paycheck paycheck = new Paycheck();
 
             //шапка
-            paycheck.AddRow(new PaycheckRow(50, " ") { LeftValue = "Welcome to Lenta" });
-            paycheck.AddRow(new PaycheckRow(50, " "));
-            paycheck.AddRow(new PaycheckRow(50, " ") { LeftValue = "Today is", RightValue = DateTime.Now.ToString("f") });
-            paycheck.AddRow(new PaycheckRow(50, " "));
+            paycheck.AddRow(new PaycheckRow(50, ' ') { LeftValue = "Welcome to Lenta" });
+            paycheck.AddRow(new PaycheckRow(50, ' '));
+            paycheck.AddRow(new PaycheckRow(50, ' ') { LeftValue = "Today is", RightValue = DateTime.Now.ToString("f") });
+            paycheck.AddRow(new PaycheckRow(50, ' '));
 
             //список товаров
-            paycheck.AddRow(new PaycheckRow(50, " ") { LeftValue = "Goods", RightValue = "Price,USD" });
-            paycheck.AddRow(new PaycheckRow(50, "-"));
-            paycheck.AddRow(new PaycheckRow(50, ".") { LeftValue = "Product 1", RightValue = (100.00).ToString() });
-            paycheck.AddRow(new PaycheckRow(50, ".") { LeftValue = "Product 2", RightValue = (56.50).ToString() });
-            paycheck.AddRow(new PaycheckRow(50, ".") { LeftValue = "Product 3", RightValue = (1000.00).ToString() });
-            paycheck.AddRow(new PaycheckRow(50, "-"));
+            paycheck.AddRow(new PaycheckRow(50, ' ') { LeftValue = "Goods", RightValue = "Price,USD" });
+            paycheck.AddRow(new PaycheckRow(50, '-'));
+            paycheck.AddRow(new PaycheckRow(50, '.') { LeftValue = "Product 1", RightValue = (100.00).ToString() });
+            paycheck.AddRow(new PaycheckRow(50, '.') { LeftValue = "Product 2", RightValue = (56.50).ToString() });
+            paycheck.AddRow(new PaycheckRow(50, '.') { LeftValue = "Product 3", RightValue = (1000.00).ToString() });
+            paycheck.AddRow(new PaycheckRow(50, '-'));
 
             //итого
-            paycheck.AddRow(new PaycheckRow(50, " ") { LeftValue = "Total", RightValue = "1156.50" });
+            paycheck.AddRow(new PaycheckRow(50, ' ') { LeftValue = "Total", RightValue = "1156.50" });
 
             Console.WriteLine(paycheck);
         }
@@ -77,22 +77,17 @@ namespace Paycheck
     class PaycheckRow
     {
         private int width;
-        private string gap;
+        private char gap;
 
         private string leftValue    = string.Empty;
         private string rightValue   = string.Empty;
 
-        private const string VERTICAL_LINE = "║";
+        private const char VERTICAL_LINE = '║';
 
-        public PaycheckRow(int width = 50, string gap = " ")
+        public PaycheckRow(int width = 50, char gap = ' ')
         {
             this.width = width;
             this.gap = gap;
-
-            if (gap.Length == 0)
-            {
-                throw new Exception("Empty gap");
-            }
         }
 
         public string LeftValue
@@ -117,9 +112,9 @@ namespace Paycheck
 
         public override string ToString()
         {
-            int gapBetweenLeftAndRightValue = width - (leftValue.Length + rightValue.Length) - 2;
+            int gapBetweenLeftAndRightValue = width - rightValue.Length - 3;
 
-            return VERTICAL_LINE + LeftValue + string.Concat(Enumerable.Repeat(gap, gapBetweenLeftAndRightValue).ToList()) + RightValue + VERTICAL_LINE;
+            return VERTICAL_LINE + LeftValue.PadRight(gapBetweenLeftAndRightValue, gap) + RightValue + VERTICAL_LINE;
         }
 
         private void CheckBounds()
