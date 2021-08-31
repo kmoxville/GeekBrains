@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{D24BEFC0-AD0C-47B4-BD4F-EE72776D310E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paycheck", "Paycheck\Paycheck.csproj", "{2AAD826C-ED02-415B-BE82-566EC4E821B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paycheck", "Paycheck\Paycheck.csproj", "{2AAD826C-ED02-415B-BE82-566EC4E821B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectEvenNumber", "DetectEvenNumber\DetectEvenNumber.csproj", "{4F200599-41BD-4962-995B-2C275C576654}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DetectEvenNumber", "DetectEvenNumber\DetectEvenNumber.csproj", "{4F200599-41BD-4962-995B-2C275C576654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageTemperature", "AverageTemperature\AverageTemperature.csproj", "{8E95CD86-203D-4B11-8314-DD386212EAAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageTemperature", "AverageTemperature\AverageTemperature.csproj", "{8E95CD86-203D-4B11-8314-DD386212EAAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessingAroundWithMonth", "MessingAroundWithMonth\MessingAroundWithMonth.csproj", "{C9BBA826-AFB0-483A-BC00-9593170423B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessingAroundWithMonth", "MessingAroundWithMonth\MessingAroundWithMonth.csproj", "{C9BBA826-AFB0-483A-BC00-9593170423B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LessonArrays1", "LessonArrays1\LessonArrays1.csproj", "{215059F2-855B-433B-8991-33B08211B151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C9BBA826-AFB0-483A-BC00-9593170423B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9BBA826-AFB0-483A-BC00-9593170423B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9BBA826-AFB0-483A-BC00-9593170423B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{215059F2-855B-433B-8991-33B08211B151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215059F2-855B-433B-8991-33B08211B151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215059F2-855B-433B-8991-33B08211B151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215059F2-855B-433B-8991-33B08211B151}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
