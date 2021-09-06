@@ -15,6 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageTemperature", "Avera
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessingAroundWithMonth", "MessingAroundWithMonth\MessingAroundWithMonth.csproj", "{C9BBA826-AFB0-483A-BC00-9593170423B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson3_2", "Lesson3_2\Lesson3_2.csproj", "{5B7249EE-A908-408B-806C-83108BFBA510}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LessonArrays1", "LessonArrays1\LessonArrays1.csproj", "{215059F2-855B-433B-8991-33B08211B151}"
 EndProject
 Global
@@ -47,6 +48,10 @@ Global
 		{C9BBA826-AFB0-483A-BC00-9593170423B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9BBA826-AFB0-483A-BC00-9593170423B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9BBA826-AFB0-483A-BC00-9593170423B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7249EE-A908-408B-806C-83108BFBA510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7249EE-A908-408B-806C-83108BFBA510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7249EE-A908-408B-806C-83108BFBA510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7249EE-A908-408B-806C-83108BFBA510}.Release|Any CPU.Build.0 = Release|Any CPU
 		{215059F2-855B-433B-8991-33B08211B151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{215059F2-855B-433B-8991-33B08211B151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{215059F2-855B-433B-8991-33B08211B151}.Release|Any CPU.ActiveCfg = Release|Any CPU
