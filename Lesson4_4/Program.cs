@@ -23,9 +23,7 @@ namespace Lesson4_4
             int prevValue       = 0;
             int currentValue    = 0;
 
-            romeNumber = romeNumber.ToUpper();
-
-            foreach (char ch in romeNumber.ToCharArray().Reverse())
+            foreach (char ch in romeNumber.ToUpper().ToCharArray().Reverse())
             {
                 currentValue = RomeCharToInt(ch);
                 result += (currentValue >= prevValue ? currentValue : -currentValue);
