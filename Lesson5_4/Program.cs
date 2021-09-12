@@ -16,34 +16,30 @@ namespace Lesson5_4
         /// <returns>Содержимое каталога в виде дерева</returns>
         public static string GetDirectoryTree(DirectoryInfo directoryInfo, bool recursively = true)
         {
-            return GetDirectoryTree(directoryInfo, recursively, 0).ToString();
+            return GetDirectoryTree(new StringBuilder(), directoryInfo, recursively, 0).ToString();
         }
 
         /// <summary>
-        /// Для внутреннего использования, скрывает служебный параметр step
+        /// Для внутреннего использования, использует один общий StringBuilder
         /// </summary>
         /// <param name="directoryInfo"></param>
         /// <param name="recursively"></param>
         /// <param name="step"></param>
         /// <returns></returns>
-        private static StringBuilder GetDirectoryTree(DirectoryInfo directoryInfo, bool recursively = true, int step = 0)
+        private static StringBuilder GetDirectoryTree(StringBuilder stringBuilder, DirectoryInfo directoryInfo, bool recursively = true, int step = 0)
         {
-            StringBuilder result = new StringBuilder();
-
             foreach (var fsInfo in directoryInfo.GetFileSystemInfos())
             {
-                result.Append(new string('\t', step));
-                result.AppendLine(fsInfo.Name);
+                stringBuilder.Append(new string('\t', step));
+                stringBuilder.AppendLine(fsInfo.Name);
 
                 if (recursively && fsInfo is DirectoryInfo dirInfo)
                 {
-                    StringBuilder subtree = GetDirectoryTree(dirInfo, true, step + 1);
-                    if (subtree.Length != 0)
-                        result.Append(subtree);
+                    GetDirectoryTree(stringBuilder, dirInfo, true, step + 1);
                 }
             }
 
-            return result;
+            return stringBuilder;
         }
 
         static void Main(string[] args)
