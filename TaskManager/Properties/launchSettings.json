@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TaskManager": {
+      "commandName": "Project",
+      "commandLineArgs": "-p 5"
+    }
+  }
+}

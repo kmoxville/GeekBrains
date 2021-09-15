@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CmdParser": {
+      "commandName": "Project",
+      "commandLineArgs": "-v -p 5"
+    }
+  }
+}
