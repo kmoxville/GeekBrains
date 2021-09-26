@@ -7,11 +7,11 @@ using System.Text;
 namespace CmdParser
 {
     public class Parser
-    {
+    { 
         public Parser(string[] args)
         {
-            if ((args?.Length ?? 0) == 0)
-                throw new ArgumentNullException("Args is null or zero length");
+            //if ((args?.Length ?? 0) == 0)
+            //    _errors;
 
             _args = args;   
         }
@@ -58,12 +58,26 @@ namespace CmdParser
                 }
                 catch (InvalidOperationException) 
                 {
-                    _errors.Add(new ParsingException("option not found") { Argument = arg });
+                    PropertyInfo descriptionMemberInfo = (PropertyInfo)properties
+                        .Where(propertyInfo => propertyInfo.GetCustomAttribute(typeof(MainOption)) != null)
+                        .FirstOrDefault();
+
+                    if (descriptionMemberInfo != null)
+                        SetOptionValue(options, descriptionMemberInfo, arg);
+                    else
+                        _errors.Add(new ParsingException("option not found") { Argument = arg });
                 }
                 catch (ParsingException pe)
                 {
                     _errors.Add(pe);
                 }
+            }
+
+            foreach (PropertyInfo pi in options.GetType().GetProperties().Where(prop => (prop.GetCustomAttribute(typeof(Option)) as Option)?.Required ?? false))
+            {
+                var propValue = pi.GetValue(options);
+                if (pi.PropertyType == typeof(string) && string.IsNullOrEmpty(propValue as string))
+                    _errors.Add(new ParsingException($"{pi.Name} parameter is missing"));
             }
         }
 
