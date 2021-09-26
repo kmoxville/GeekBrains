@@ -214,15 +214,8 @@ namespace FileManager
             return true;
         }
 
-        private void NextPage()
-        {
-            CurrentPage++;
-        }
-
-        private void PrevPage()
-        {
-            CurrentPage--;
-        }
+        private void NextPage() => CurrentPage++;
+        private void PrevPage() => CurrentPage--;
 
         private void UpdateScreen()
         {
