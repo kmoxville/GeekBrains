@@ -103,7 +103,7 @@ namespace AlgLesson2
             while (_last != null)
                 RemoveNodeAt(_last);
 
-            _size--;
+            _size = 0;
         }
 
         private void RemoveNodeAt(Node<T> node)
