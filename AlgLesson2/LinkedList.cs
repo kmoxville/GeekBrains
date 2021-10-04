@@ -5,6 +5,11 @@ using System.Text;
 
 namespace AlgLesson2
 {
+    /// <summary>
+    /// Названия некоторых методов отличаются от тз, но смысл тот же
+    /// AddNode/AddNodeAfter можно имулировать Add/Insert
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class LinkedList<T> : ILinkedList<T>
     {
         private int _size;
@@ -44,9 +49,10 @@ namespace AlgLesson2
         {
             Node<T> currentNode = _first;
             
-            while (currentNode?.Next != null)
+            while (currentNode != null)
             {
                 yield return currentNode.Value;
+                currentNode = currentNode?.Next;
             }
         }
 
@@ -77,18 +83,33 @@ namespace AlgLesson2
             newNode.Prev = currentNode?.Prev;
 
             currentNode?.Prev?.SetNext(newNode);
-            currentNode?.SetNext(newNode);
+            currentNode?.SetPrev(newNode);
 
             _size++;
         }
 
         public void RemoveAt(int index)
         {
-            Node<T> currentNode = GetNode(index);
-            if (currentNode == null) throw new ArgumentOutOfRangeException($"{this.ToString()} : RemoveAt()");
+            Node<T> node = GetNode(index);
+            if (node == null) throw new ArgumentOutOfRangeException($"{this.ToString()} : RemoveAt()");
 
-            Node<T> prevNode = currentNode.Prev;
-            Node<T> nextNode = currentNode.Next;
+            RemoveNodeAt(node);
+        }
+
+        public void Clear()
+        {
+            Node<T> currentNode = _last;
+
+            while (_last != null)
+                RemoveNodeAt(_last);
+
+            _size--;
+        }
+
+        private void RemoveNodeAt(Node<T> node)
+        {
+            Node<T> prevNode = node?.Prev;
+            Node<T> nextNode = node?.Next;
 
             prevNode?.SetNext(nextNode);
             nextNode?.SetPrev(prevNode);
@@ -105,11 +126,11 @@ namespace AlgLesson2
         {
             if (index > _size) throw new ArgumentOutOfRangeException($"{this.ToString()} : GetNode()");
 
-            Node<T> currentNode = null;
+            Node<T> currentNode = _first;
 
-            for (int i = 0; i <= index; i++)
+            for (int i = 0; i < index; i++)
             {
-                currentNode = _first?.Next;
+                currentNode = currentNode?.Next;
             }
 
             return currentNode;
@@ -121,7 +142,7 @@ namespace AlgLesson2
             public Node<TValue> Next { get; set; }
             public Node<TValue> Prev { get; set; }
 
-            //нужны для сокращенного обращения T?.SetNext, со свойствами это не работает
+            //нужны для сокращенного обращения T?.SetNext(), со свойствами это не работает
             public void SetNext(Node<TValue> node) => Next = node;
             public void SetPrev(Node<TValue> node) => Prev = node;
         }

@@ -5,9 +5,9 @@ using System.Text;
 namespace AlgLesson2
 {
     //Начальную и конечную ноду нужно хранить в самой реализации интерфейса
-    public interface ILinkedList<T> : IEnumerable<T>
+    public interface ILinkedList<T> : IEnumerable<T>, IReadOnlyCollection<T>
     {
-        int Count { get; } // возвращает количество элементов в списке
+        //int Count { get; } // возвращает количество элементов в списке (в IReadOnlyCollection)
 
         void Add(T value);  // добавляет новый элемент списка
 
