@@ -143,39 +143,11 @@ namespace AlgLesson5
         /// </summary>
         private static class NodeIndex
         {
-            private static Dictionary<int, int> _cachedFirstItemsInRow = new();
+            public static int GetLeftNode(int current) => current * 2;
 
-            public static int GetLeftNode(int current)
-            {
-                int firstItemInRow;
-                if (!_cachedFirstItemsInRow.TryGetValue(current, out firstItemInRow))
-                {
-                    int n = current;
+            public static int GetRightNode(int current) => GetLeftNode(current) + 1;
 
-                    n--;
-                    n |= n >> 1;
-                    n |= n >> 2;
-                    n |= n >> 4;
-                    n |= n >> 8;
-                    n |= n >> 16;
-                    n++;
-
-                    firstItemInRow = current % 2 == 0 ? n : (n >> 1);
-                    _cachedFirstItemsInRow.Add(current, firstItemInRow);
-                }
-
-                return firstItemInRow * 2 + (current - firstItemInRow) * 2;
-            }
-
-            public static int GetRightNode(int current)
-            {
-                return GetLeftNode(current) + 1;
-            }
-
-            public static int GetRootNode(int current)
-            {
-                return GetLeftNode(current) / 2;
-            }
+            public static int GetRootNode(int current) => GetLeftNode(current) / 2;
         }    
     }
 
