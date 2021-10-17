@@ -21,6 +21,14 @@ namespace AlgLesson5
             tree.Add(85);
             tree.DebugPrint();
 
+            Console.WriteLine("Add 84");
+            tree.Add(84);
+            tree.DebugPrint();
+
+            Console.WriteLine("Add 86");
+            tree.Add(86);
+            tree.DebugPrint();
+
             Console.WriteLine("Add 120");
             tree.Add(120);
             tree.DebugPrint();

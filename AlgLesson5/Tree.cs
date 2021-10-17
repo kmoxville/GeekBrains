@@ -120,20 +120,22 @@ namespace AlgLesson5
 
         public void DebugPrint()
         {
-            DebugPrint(1, 50, 0, Console.CursorTop + 1);
-            Console.SetCursorPosition(0, Console.CursorTop + 2);
-            Console.WriteLine("\n\n");
+            int top = DebugPrint(1, 50, 0, Console.CursorTop + 1);
+            Console.SetCursorPosition(0, top);
         }
 
-        private void DebugPrint(int index, int center, int depth, int top)
+        private int DebugPrint(int index, int center, int depth, int top)
         {
+            int maxLeft = depth + top, maxRight = depth + top;
             if (_items.ContainsKey(index))
             {
                 Console.SetCursorPosition(center, depth + top);
                 Console.Write(_items[index].ToString());
-                DebugPrint(NodeIndex.GetLeftNode(index), center - 15 + depth * 2, depth + 2, top);
-                DebugPrint(NodeIndex.GetRightNode(index), center + 15 - depth * 2, depth + 2, top);
+                maxLeft = DebugPrint(NodeIndex.GetLeftNode(index), center - 15 + depth * 2, depth + 2, top);
+                maxRight = DebugPrint(NodeIndex.GetRightNode(index), center + 15 - depth * 2, depth + 2, top);
             }
+
+            return Math.Max(maxLeft, maxRight);
         }
 
         /// <summary>
