@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace AlgLesson6
 {
+    /// <summary>
+    /// Граф реализован через словарь
+    /// Ключ - вершина
+    /// Ребра в HashSet
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Graph<T> : IEnumerable<(T vertex, IEnumerable<T> edges)>
     {
         private Dictionary<T, HashSet<T>> _graph = new();
@@ -23,6 +29,10 @@ namespace AlgLesson6
             }
         }
 
+        public Graph()
+        {
+        }
+
         public void AddVertex(T vertex, IEnumerable<T> edges = null)
         {
             edges ??= new HashSet<T>();
@@ -32,6 +42,50 @@ namespace AlgLesson6
         public void Add((T vertex, IEnumerable<T> edges) tuple)
         {
             AddVertex(tuple.vertex, tuple.edges);
+        }
+
+        public T[] DFS(T start)
+        {
+            HashSet<T> visited = new();
+            Stack<T> stack = new();
+
+            stack.Push(start);
+            
+            do
+            {
+                start = stack.Pop();
+                visited.Add(start);
+
+                foreach (var neighbor in _graph[start])
+                {
+                    if (!visited.Contains(neighbor))
+                        stack.Push(neighbor);
+                }
+            } while (stack.Count > 0);
+
+            return visited.ToArray();
+        }
+
+        public T[] BFS(T start)
+        {
+            HashSet<T> visited = new();
+            Queue<T> queue = new();
+
+            queue.Enqueue(start);
+
+            do
+            {
+                start = queue.Dequeue();
+                visited.Add(start);
+
+                foreach (var neighbor in _graph[start])
+                {
+                    if (!visited.Contains(neighbor))
+                        queue.Enqueue(neighbor);
+                }
+            } while (queue.Count > 0);
+
+            return visited.ToArray();
         }
 
         public IEnumerator<(T vertex, IEnumerable<T> edges)> GetEnumerator()
